@@ -37,7 +37,7 @@ public class DataContext : DbContext
         base.OnModelCreating(modelBuilder);
     }
 
-    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+    public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
     {
         var audits = new List<Audit>();
 
@@ -67,8 +67,8 @@ public class DataContext : DbContext
             audits.Add(audit);
         }
 
-        Audits.AddRange(audits);
-        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        await Audits.AddRangeAsync(audits);
+        return await base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 }
 
