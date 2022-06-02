@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using EntityFrameworkCoreAuditing.Entities.Common;
 
 namespace EntityFrameworkCoreAuditing.Entities;
 
-public class Supplier : IAuditable
+public class Supplier
 {
     [Column("SupplierId")]
     public int Id { get; set; }
