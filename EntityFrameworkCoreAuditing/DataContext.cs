@@ -31,6 +31,9 @@ public class DataContext : DbContext
             _ = entity.Property(e => e.Values).HasJsonConversion();
         });
 
+        // Enable Temporal Table for Suppliers.
+        _ = modelBuilder.Entity<Supplier>().ToTable(tableBuilder => tableBuilder.IsTemporal());
+
         base.OnModelCreating(modelBuilder);
     }
 
@@ -40,7 +43,7 @@ public class DataContext : DbContext
 
         foreach (var entry in ChangeTracker.Entries())
         {
-            // Dot not audit entities that are not tracked, not changed, or not of type IAuditable
+            // Dot not audit entities that are not tracked, not changed, or not of type IAuditable.
             if (entry.State is EntityState.Detached or EntityState.Unchanged || entry.Entity is not IAuditable)
             {
                 continue;
