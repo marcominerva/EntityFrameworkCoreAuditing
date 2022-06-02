@@ -21,9 +21,7 @@ public class DataContext : DbContext
         base.OnConfiguring(optionsBuilder);
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) => base.OnModelCreating(modelBuilder);
-
-    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-        => base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+        => base.OnModelCreating(modelBuilder);
 }
 
