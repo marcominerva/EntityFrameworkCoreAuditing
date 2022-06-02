@@ -1,2 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using EntityFrameworkCoreAuditing;
+
+using var dataContext = new DataContext();
+
+Console.ReadLine();
